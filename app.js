@@ -46,6 +46,28 @@
                     else {
                         itemQty = parseFloat(qtyFields[i].value) || 0;
                     }
+
+                    if (!!qtyFields[i].dataset) {
+                        itemPrice = parseFloat(qtyFields[i].dataset.price);
+                    }
+                    else {
+                        itemPrice = parseFloat(qtyFields[i].getAttribute('data-price')); // para navegadores antiguos
+                    }
+
+                    itemTotal = itemQty * itemPrice;
+                    itemTotalMoney = '$' + formatMoney(itemTotal.toFixed(2));
+                    orderTotal += itemTotal;
+                    orderTotalMoney = '$' + formatMoney(orderTotal.toFixed(2));
+
+                    // el elemento output se realiza con value
+                    if (!!totalFields[i].value) {
+                        totalFields[i].value = itemTotalMoney;
+                        orderTotalFields.value = orderTotalMoney;
+                    }
+                    else {
+                        totalFields[i].innerHTML = itemTotalMoney;
+                        orderTotalFields.innerHTML = orderTotalMoney;
+                    }
                 }// fir del for
 
         }; // fin de calculateTotals
