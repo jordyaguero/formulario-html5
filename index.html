@@ -205,10 +205,13 @@
             </li>
         </ul>
     </fieldset>
-    
+
+    <!-- formnovalidate es util si se utilizan las nuevas propiedades de html5
+        con el atributo formaction cambiamos la url para que no se envie los datos
+    -->
     <div class="buttons">
         <input type="submit" value="Submit order">
-        <input type="submit" id="saveOrder" value="Save Order">
+        <input type="submit" id="saveOrder" value="Save Order" formnovalidate formaction="/save">
     </div>
 </form>
 </body>
