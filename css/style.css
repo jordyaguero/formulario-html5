@@ -188,3 +188,9 @@ input[type=submit]:active, input[type=button]:active {
 
 .month-picker-month { width: 115px; }
 .month-picker-year { width: 55px; text-align: right; }
+
+/*
+Pero esta declaración tiene un problema: Cualquier campo que utiliza atributos de validación
+ como requisito o patrón será inicialmente inválido porque estos campos de formulario de pedido
+ están en blanco. Como resultado, los campos que aplican atributos de validación mostrarán un fondo
+  rojo y marrón borde, que no es agradable.*/

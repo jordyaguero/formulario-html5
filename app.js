@@ -138,7 +138,12 @@
             orderForm.className = 'invalid'; // agrega la clase invalid al elemento <form>
         }; // fin de styleInvalidForm
 
-        orderForm.addEventListener('invalid', styleInvalidForm, false); //Escucha el evento invalid en el formulario y todos los demás elementos en el formulario
+        orderForm.addEventListener('invalid', styleInvalidForm, true); //Escucha el evento invalid en el formulario y todos los demás elementos en el formulario
+
+        Modernizr.load({
+            test: Modernizr.inputtypes.month,
+            nope: 'monthpicker.js'
+        })
 
     };// fin de init
 
