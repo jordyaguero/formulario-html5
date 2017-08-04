@@ -96,6 +96,44 @@
 
         // valueAsDate es para los campos de fecha y hora
 
+        let doCustomValidity = function (field, msg) {
+            //Compruebe si el navegador admite el método setCustomValidity;
+            // Si no, establecer manualmente el valor de validationMessage
+            if ('setCustomValidity' in field) {
+                field.setCustomValidity(msg);
+            }
+            else {
+                field.validationMessage = msg;
+            }
+        };// fin de doCustomValidity
+
+        let validateForm = function () {
+            doCustomValidity(orderForm.name, '');
+            doCustomValidity(orderForm.password, '');
+            doCustomValidity(orderForm.confirm_password, '');
+            doCustomValidity(orderForm.card_name, '');
+
+            if ( orderForm.name.value.length < 4 ) {
+                doCustomValidity(orderForm.name, 'Ingresa al menos 4 caracteres');
+            }
+
+            if ( orderForm.password.value.length < 8 ) {
+                doCustomValidity(orderForm.password, 'La contraseña tiene que tener al menos 8 caracteres')
+            }
+
+            if ( orderForm.password.value !== orderForm.confirm_password.value ) {
+                doCustomValidity(orderForm.confirm_password, 'Las claves deben coincidir');
+            }
+
+            if ( orderForm.card_name.value.length < 3 ) {
+                doCustomValidity(orderForm.card_name, 'Nombre de la tarjeta debe tener al menos 3 caracteres');
+            }
+
+        };// fin de validateForm
+
+        orderForm.addEventListener('input', validateForm, false);
+        orderForm.addEventListener('keyup', validateForm, false); // el keyup para navegadores antiguos
+
     };// fin de init
 
     window.addEventListener('load', init, false);
