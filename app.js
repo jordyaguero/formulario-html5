@@ -134,6 +134,12 @@
         orderForm.addEventListener('input', validateForm, false);
         orderForm.addEventListener('keyup', validateForm, false); // el keyup para navegadores antiguos
 
+        let styleInvalidForm = function () {
+            orderForm.className = 'invalid'; // agrega la clase invalid al elemento <form>
+        }; // fin de styleInvalidForm
+
+        orderForm.addEventListener('invalid', styleInvalidForm, false); //Escucha el evento invalid en el formulario y todos los demás elementos en el formulario
+
     };// fin de init
 
     window.addEventListener('load', init, false);
